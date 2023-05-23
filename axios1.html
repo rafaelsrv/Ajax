@@ -13,9 +13,15 @@
 
     <script>
         const url = 'dados/estados.json'
-        axios(url)
-        .then(response => {
-            console.log(response.data)
+        
+        axios(url).then(response => {
+            const itens = response.data.reduce(
+                (html, estado) =>  html + `<li>${estado.nome}</li>`, ''
+                
+            )
+            
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            
         })
         
     </script>
